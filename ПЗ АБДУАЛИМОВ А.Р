@@ -1,0 +1,154 @@
+КНИГА:
+Book.java
+package com.company;
+
+public class Book{
+    private String nameBook;
+    private String author;
+    private int pages;
+    private int chapter;
+    public Book(String n, int p, int c, String a){ //1
+        nameBook = n;
+        pages = p;
+        chapter = c;
+        author = a;
+    }
+    public Book(int p, int c){ //2
+        nameBook = "Boy Li";
+        pages = p;
+        chapter = c;
+        author = "Pavlin E.R";
+    }
+    public Book(){ //3
+        nameBook = "Queen";
+        pages = 400;
+        chapter = 10;
+        author = "Kremleva E.A";
+    }
+    public Book(String a){ //4
+        nameBook = "Enciklopedia";
+        pages = 1500;
+        chapter = 130;
+        author = a;
+    }
+
+
+    public void setNameBook(String nameBook){
+        this.nameBook = nameBook;
+    }
+    public void setPages(int pages){
+        this.pages = pages;
+    }
+    public void setChapter(int chapter){
+        this.chapter = chapter;
+    }
+    public void setAuthor(String author){
+        this.author = author;
+    }
+    public String getNameBook(String nameBook){
+        return nameBook;
+    }
+    public int getPages(int pages) {
+        return pages;
+    }
+    public int getChapter(int chapter) {
+        return chapter;
+    }
+    public String getAuthor(String author){
+        return author;
+}
+    public String toString(){
+        return this.nameBook+this.pages+this.chapter+this.author;
+    }
+    public void intoBooks(){
+        System.out.println(" Book "+nameBook+" has "+pages+" pages and "+chapter+" chapters. Author: "+author);
+    }
+}
+
+
+Main.java
+
+package com.company;
+
+public class Main {
+
+    public static void main(String[] args) {
+	Book type1 = new Book("Grom", 524, 23, "Filger G.X");
+    Book type2 = new Book(32, 42);
+    Book type3 = new Book();
+    Book type4 = new Book("Vidjev M.I");
+
+
+    type1.intoBooks();
+    type2.intoBooks();
+    type3.intoBooks();
+    type4.intoBooks();
+
+    }
+}
+
+
+МЯЧ:
+
+Ball.java
+
+package com.company;
+//import java.lang.*;
+public class Ball {
+    private String ball;
+    private String colour;
+    public Ball(String b, String c ) {
+        ball = b;
+        colour = c;
+    }
+    public Ball(String b ) {
+        ball = b;
+        colour = "Blue";
+    }
+    public Ball() {
+        ball = "Tennis";
+        colour = "";
+
+    }
+    public void setBoll(String boll){
+        this.ball = ball;
+
+    }
+    public void setColour(String colour){
+
+        this.colour = colour;
+    }
+    public String getBall(){
+
+        return ball;
+    }
+    public String getColour(){
+
+        return colour;
+    }
+    public String toString(){
+
+        return this.ball+" , colour "+this.colour;
+    }
+    public void intoBollColour(){
+
+        System.out.println(ball+" ball have "+colour+" colour ");
+    }
+}
+
+Main.java
+
+package com.company;
+//import java.lang.*;
+public class Main {
+
+    public static void main(String[] args) {
+	 Ball type1 = new Ball("soccer", "Black");
+	 Ball type2 = new Ball("volleyboll");
+	 Ball type3 = new Ball ();
+	 type3.setColour("Green");
+	 type1.intoBollColour();
+	 type2.intoBollColour();
+	 type3.intoBollColour();
+    }
+}
