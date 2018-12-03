@@ -1,0 +1,212 @@
+MAIN
+package com.company;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Shape s1 = new Circle(5.5, "GREEN", false); // Upcast Circle to Shape
+        System.out.println(s1);
+        System.out.println(s1.getArea());
+        System.out.println(s1.getPerimeter());
+        System.out.println(s1.getColor());
+        System.out.println(s1.isFilled());
+        Circle c1 = (Circle)s1; // Downcast back to Circle
+        System.out.println(c1);
+        System.out.println(c1.getArea());
+        System.out.println(c1.getPerimeter());
+        System.out.println(c1.getColor());
+        System.out.println(c1.isFilled());
+        System.out.println(c1.getRadius());
+        //Shape s2 = new Shape(); Тк Shape абстрактный класс
+        Shape s3 = new Rectangle(1.0, 2.0, "GREEN", false); // Upcast Rectangle to Shape
+        System.out.println(s3);
+        System.out.println(s3.getArea());
+        System.out.println(s3.getPerimeter());
+        System.out.println(s3.getColor());
+        Rectangle r1 = (Rectangle)s3; // downcast to Rectangle
+        System.out.println(r1);
+        System.out.println(r1.getArea());
+        System.out.println(r1.getColor());
+        System.out.println(r1.getLength());
+        Shape s4 = new Square(6.6); // Upcast Square to Shape
+        System.out.println(s4);
+        System.out.println(s4.getArea());
+        System.out.println(s4.getColor());
+        Rectangle r2 = (Rectangle)s4; // downcast to Rectangle
+        System.out.println(r2);
+        System.out.println(r2.getArea());
+        System.out.println(r2.getColor());
+
+        System.out.println(r2.getLength());
+        // Downcast Rectangle r2 to Square
+        Square sq1 = (Square)r2;
+        System.out.println(sq1);
+        System.out.println(sq1.getArea());
+        System.out.println(sq1.getColor());
+        System.out.println(sq1.getSide());
+        System.out.println(sq1.getLength());
+    }
+}
+
+SHAPE:
+package com.company;
+
+public abstract class Shape {
+    protected String color;
+    protected boolean filled;
+    public Shape()
+    {
+        color = "blue";
+        filled = true;
+    }
+    public Shape (String color, boolean filled)
+    {
+        this.color = color;
+        this.filled = filled;
+    }
+    public String getColor(){return color;}
+    public void setColor(String color){
+        this.color = color;
+    }
+    public boolean isFilled(){
+        if (filled) return true;
+        else return false;
+    }
+    public void setFilled(boolean filled){
+        this.filled = filled;
+    }
+    public abstract double getArea();
+    public abstract double getPerimeter();
+    public abstract String toString();
+}
+
+CIRCLE:
+package com.company;
+import static java.lang.Math.*;
+
+public class Circle extends Shape {
+    protected double radius;
+    public Circle(){
+        color = "blue";
+        filled = true;
+        radius = 4.0;
+    }
+    public Circle(double radius){
+        color = "blue";
+        filled = true;
+        this.radius = radius;
+    }
+    public Circle(double radius, String color, boolean filled){
+        this.color = color;
+        this.filled = filled;
+        this.radius = radius;
+    }
+    public double getRadius(){
+        return radius;
+    }
+    public void setRadius(double radius){
+        this.radius = radius;
+    }
+    public double getArea(){
+        return radius*radius*PI;
+    }
+    public double getPerimeter(){
+        return 2*PI*radius;
+    }
+    public String toString(){
+        if (filled)
+            return "Shape: filled circle. Radius: " + this.radius + ",color: "+this.color;
+        else return "Shape: circle. Radius: " + this.radius + ",color: "+this.color;
+    }
+}
+
+SQUARE:
+package com.company;
+
+public class Square extends Rectangle{
+    public Square(){
+        color = "blue";
+        filled = true;
+        width = 4.0;
+        width = 4.0;
+    }
+    public Square(double side){
+        color = "blue";
+        filled = true;
+        width = side;
+        width = side;
+    }
+    public Square(double side, String color,boolean filled ){
+        this.color = color;
+        this.filled = filled;
+        width = side;
+        width = side;
+    }
+    public double getSide(){
+        return width;
+    }
+    public void setSide(double side){
+        width = side;
+        length = side;
+    }
+    public void setWidth(double side) {
+        setSide(side);
+    }
+    public void setLength(double side) {
+        setSide(side);
+    }
+    public String toString(){
+        if (filled)
+            return "Shape: filled square. Side: " + this.width  + ",color: "+this.color;
+        else return "Shape: square. Side: " + this.width + ",color: "+this.color;
+    }
+}
+
+RECTANGEL:
+package com.company;
+
+public class Rectangle extends Shape{
+    protected double width;
+    protected double length;
+    public Rectangle(){
+        color = "blue";
+        filled = true;
+        width = 4.0;
+        length = 4.0;
+    }
+    public Rectangle(double width, double length){
+        color = "blue";
+        filled = true;
+        this.width = width;
+        this.length = length;
+    }
+    public Rectangle(double width, double length, String color, boolean filled){
+        this.color = color;
+        this.filled = filled;
+        this.width = width;
+        this.length = length;
+    }
+    public double getWidth(){
+        return width;
+    }
+    public double getLength(){
+        return length;
+    }
+    public void setWidth(double width){
+        this.width = width;
+    }
+    public void setLength(double length){
+        this.length = length;
+    }
+    public double getArea(){
+        return width * length;
+    }
+    public double getPerimeter(){
+        return 2*(width + length);
+    }
+    public String toString(){
+        if (filled)
+            return "Shape: filled rectangle. Width: " + this.width + ", length: " + this.length + ",color: "+this.color;
+        else return "Shape: rectangle. Width: " + this.width + ", length: " + this.length + ",color: "+this.color;
+    }
+}
