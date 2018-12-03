@@ -1,0 +1,25 @@
+package com.company;
+public class Main {
+
+    public static void practFunc(int number)
+    {
+        if(number != 0)
+        {
+            boolean gid = false;
+            for (int index = number; index >= 1; index--)
+            {
+                if(gid == false)
+                {
+                    practFunc(number-1);
+                    gid = true;
+                }
+                System.out.print(number + ", ");
+            }
+        }
+    }
+
+    public static void main(String[] args) {
+        int number = 6;
+        practFunc(number);
+    }
+}
